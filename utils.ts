@@ -27,7 +27,7 @@ export const hasPaternalMaleAncestor = (heirs: Heirs) => {
 }
 
 export const distribute = (
-  heirs: { name: Heir, count: number, proportion?: number }[],
+  heirs: { name: Heir, type: 'tasib'|'fard'|'special_case', count: number, proportion?: number }[],
   amount: Fraction
 ) => {
   const total = heirs.length
@@ -35,6 +35,7 @@ export const distribute = (
     const result: Result = {
       name: h.name,
       count: h.count,
+      type: h.type,
       share: amount.mul(h.proportion || 1, total)
     }
     return result

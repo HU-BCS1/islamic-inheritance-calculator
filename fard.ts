@@ -2,8 +2,6 @@ import fhs from './fardHeirs'
 import { Heirs } from './heir'
 import {
   Result,
-  QuotaResult,
-  isQuotaResult,
   findFromResult,
   updateResults,
 } from './result'
@@ -12,14 +10,15 @@ import { sixth } from './quota'
 import flow from 'lodash.flow'
 
 
-export function calculateFard(heirs: Heirs) : QuotaResult[] {
+export function calculateFard(heirs: Heirs) : Result[] {
   const fardHiers = fhs.filter(fh => exists(heirs, fh.name))
 
   const results = fardHiers
     .map(fh => {
-      const result: QuotaResult = {
+      const result: Result = {
         name: fh.name,
         count: count(heirs, fh.name),
+        type: 'fard',
         share: fh.share(heirs)
       }
       return result
@@ -34,8 +33,6 @@ function shareSixthBetweenGrandmothers(results: Result[]) : Result[] {
   if(
     mGrandMother &&
     pGrandMother &&
-    isQuotaResult(mGrandMother) &&
-    isQuotaResult(pGrandMother) &&
     !isZero(mGrandMother.share) &&
     !isZero(pGrandMother.share)
   ) {

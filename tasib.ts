@@ -1,12 +1,13 @@
 import ahs from './asabaHeirs'
 import { Heirs } from './heir'
-import {
-  AsabaResult,
-} from './result'
-import { exists, count } from './utils'
+import { unknown } from './quota'
+import { Result } from './result'
+import { exists, count, distribute } from './utils'
+import Fraction from 'fraction.js'
+import flow from 'lodash.flow'
 
 
-export function calculateTasib(heirs: Heirs) : AsabaResult[] {
+export function calculateTasib(heirs: Heirs, remaining: Fraction) : Result[] {
   // filter asaba and sort them by their tasibRank
   const asabas = ahs
     .filter(ah => exists(heirs, ah.name))
@@ -15,13 +16,16 @@ export function calculateTasib(heirs: Heirs) : AsabaResult[] {
   const qualifiedAsabas = asabas
     .filter(ah => asabas[0].tasibRank === ah.tasibRank)
 
-  return qualifiedAsabas
+  const results = qualifiedAsabas
     .map(ah => {
-      const result: AsabaResult = {
+      const result: Result = {
         name: ah.name,
         count: count(heirs, ah.name),
-        share: 'asaba'
+        type: 'tasib',
+        share: unknown
       }
       return result
   })
+
+  return distribute(results, remaining)
 }

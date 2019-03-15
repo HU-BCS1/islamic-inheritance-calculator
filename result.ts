@@ -1,13 +1,10 @@
-import Fraction from 'fraction.js';
+import Fraction from 'fraction.js'
 import { Heir } from './heir'
 
-export type Result = { name: Heir, count: number, share: 'asaba' | Fraction }
-export type QuotaResult = { name: Heir, count: number, share: Fraction }
-export type AsabaResult = { name: Heir, count: number, share: 'asaba' }
+export type Result = { name: Heir, count: number, type: 'tasib'|'fard'|'special_case', share: Fraction }
 
-export function isQuotaResult(result: Result): result is QuotaResult {
-    return result.share !== 'asaba'
-}
+export const isFard = (result: Result) => result.type === 'fard' 
+export const isTasib = (result: Result) => result.type === 'tasib' 
 
 export const findFromResult = (results: Result[], heir: Heir) => {
   return results.find(r => r.name === heir)
@@ -24,8 +21,16 @@ export const updateResults = (
 }
 
 export function printResults(results: Result[]) {
-  function resultFractionToString(r: Result) {
-    return isQuotaResult(r) ? { ...r, share: r.share.toFraction() } : r
-  }
-  console.log(results.map(resultFractionToString))
+  const fractionToString = (r: Result) => ({
+    ...r,
+    share: r.share.toFraction()
+  })
+
+  console.log(results.map(fractionToString))
+}
+
+export const sumResults = (results: Result[]) => {
+  let sum = new Fraction(0)
+  results.forEach(r => sum = sum.add(r.share))
+  return sum
 }
