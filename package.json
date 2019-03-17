@@ -10,7 +10,11 @@
   },
   "dependencies": {
     "@types/lodash.flow": "^3.5.6",
+    "@types/lodash.sum": "^4.0.6",
+    "@types/lodash.sumby": "^4.6.6",
     "fraction.js": "^4.0.12",
-    "lodash.flow": "^3.5.0"
+    "lodash.flow": "^3.5.0",
+    "lodash.sum": "^4.0.2",
+    "lodash.sumby": "^4.6.0"
   }
 }

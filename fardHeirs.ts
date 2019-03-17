@@ -27,7 +27,7 @@ const Wife: FardHeir = {
 const Daughter: FardHeir = {
   name: 'daughter',
   share: function(heirs) {
-    if (exists(heirs, 'son')) { return nothing } // ta'seeb
+    if (exists(heirs, 'son')) { return nothing } // joint ta'seeb
 
     if (count(heirs, this.name) === 1) { return half }
     else { return twoThird }
@@ -38,7 +38,7 @@ const PaternalGrandDaughter: FardHeir = {
   name: 'paternal_grand_daughter',
   share: function(heirs) {
     if (exists(heirs, 'son')) { return nothing }
-    if (exists(heirs, 'paternal_grand_son')) { return nothing } // ta'seeb
+    if (exists(heirs, 'paternal_grand_son')) { return nothing } // joint ta'seeb
 
     if (count(heirs, 'daughter') > 1) {
       return nothing
@@ -76,7 +76,6 @@ const Mother: FardHeir = {
 const PaternalGrandFather: FardHeir = {
   name: 'paternal_grand_father',
   share: function(heirs) {
-    // ignore grandfather & siblings case for now
     if (exists(heirs, 'father')) { return nothing }
     if (hasChild(heirs)) { return sixth }
     return nothing // ta'seeb
@@ -107,7 +106,7 @@ const FullSister: FardHeir = {
   share: function(heirs) {
     if (hasChild(heirs)) { return nothing }
     if (hasPaternalMaleAncestor(heirs)) { return nothing }
-    if (exists(heirs, 'full_brother')) { return nothing } // ta'seeb
+    if (exists(heirs, 'full_brother')) { return nothing } // joint ta'seeb
 
     if (count(heirs, this.name) === 1) { return half }
     else { return twoThird }
@@ -120,7 +119,7 @@ const PaternalSister: FardHeir = {
     if (hasChild(heirs)) { return nothing }
     if (hasPaternalMaleAncestor(heirs)) { return nothing }
     if (exists(heirs, 'full_brother')) { return nothing }
-    if (exists(heirs, 'paternal_brother')) { return nothing } // ta'seeb
+    if (exists(heirs, 'paternal_brother')) { return nothing } // joint ta'seeb
     if (count(heirs, 'full_sister') > 1) {return nothing }
 
     if (count(heirs, 'full_sister') === 1) {

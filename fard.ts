@@ -23,6 +23,7 @@ export function calculateFard(heirs: Heirs) : Result[] {
       }
       return result
     })
+    .filter(r => !isZero(r.share))
 
   return flow([shareSixthBetweenGrandmothers])(results)
 }
@@ -30,12 +31,7 @@ export function calculateFard(heirs: Heirs) : Result[] {
 function shareSixthBetweenGrandmothers(results: Result[]) : Result[] {
   const mGrandMother = findFromResult(results, 'maternal_grand_mother')
   const pGrandMother = findFromResult(results, 'paternal_grand_mother')
-  if(
-    mGrandMother &&
-    pGrandMother &&
-    !isZero(mGrandMother.share) &&
-    !isZero(pGrandMother.share)
-  ) {
+  if(mGrandMother && pGrandMother) {
     return updateResults(
       results,
       distribute([mGrandMother, pGrandMother], sixth)
