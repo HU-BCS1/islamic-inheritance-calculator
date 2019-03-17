@@ -7,7 +7,6 @@ import {
 } from './result'
 import { exists, count, distribute, isZero } from './utils'
 import { sixth } from './quota'
-import flow from 'lodash.flow'
 
 
 export function calculateFard(heirs: Heirs) : Result[] {
@@ -25,7 +24,7 @@ export function calculateFard(heirs: Heirs) : Result[] {
     })
     .filter(r => !isZero(r.share))
 
-  return flow([shareSixthBetweenGrandmothers])(results)
+  return shareSixthBetweenGrandmothers(results)
 }
 
 function shareSixthBetweenGrandmothers(results: Result[]) : Result[] {
