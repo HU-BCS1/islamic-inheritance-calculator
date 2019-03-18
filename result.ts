@@ -6,7 +6,12 @@ export type Result = { name: Heir, count: number, type: 'tasib'|'fard'|'special_
 export const isFard = (result: Result) => result.type === 'fard' 
 export const isTasib = (result: Result) => result.type === 'tasib' 
 
-export const findFromResult = (results: Result[], heir: Heir) => {
+export const findFromResult = (
+  results: Result[],
+  heir: Heir,
+  type?: 'tasib'|'fard'|'special_case'
+) => {
+  if(type) return results.find(r => r.name === heir && r.type === type)
   return results.find(r => r.name === heir)
 }
 

@@ -1,4 +1,4 @@
-import { heirs, Heirs } from './heir'
+import { heirs as defaultHeirs, Heirs } from './heir'
 import {
   printResults
 } from './result'
@@ -7,9 +7,13 @@ import { calculateTasib } from './tasib'
 import { calculateSpecialCases } from './specialCases'
 
 
-const caseOne: Heirs = { ...heirs, daughter: 1, son: 2 }
-const fardResult = calculateFard(caseOne)
-const tasibResult = calculateTasib(caseOne, fardResult)
-const results = calculateSpecialCases(fardResult, tasibResult)
+export const calculate = (heirs: Partial<Heirs>) => {
+  const allHeirs: Heirs = { ...defaultHeirs, ...heirs }
+  const fardResult = calculateFard(allHeirs)
+  const tasibResult = calculateTasib(allHeirs, fardResult)
+  const results = calculateSpecialCases(fardResult, tasibResult)
+  return results
+}
 
-printResults(results)
+// const result = calculate({ son: 1, daughter: 1 })
+// printResults(result)

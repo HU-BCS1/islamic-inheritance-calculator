@@ -1,16 +1,26 @@
 {
-  "name": "isc",
+  "name": "@islamic-inheritance-calculator/core",
   "version": "1.0.0",
   "description": "islamic inheritance calculator",
   "main": "index.js",
   "author": "Hormuud BSC1 group B",
   "license": "MIT",
   "scripts": {
-    "start": "tsc && node dist/index.js"
+    "start": "tsc && node dist/index.js",
+    "test": "jest"
   },
   "dependencies": {
     "@types/lodash.sumby": "^4.6.6",
     "fraction.js": "^4.0.12",
     "lodash.sumby": "^4.6.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.11",
+    "jest": "^24.5.0",
+    "ts-jest": "^24.0.0",
+    "typescript": "^3.3.3333"
+  },
+  "jest": {
+    "preset": "ts-jest"
   }
 }
