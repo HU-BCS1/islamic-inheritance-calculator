@@ -3,7 +3,7 @@ NB: This a work in progress. if you see an error in calculation please file  an 
 
 ## install
 ```
-npm install --save https://github.com/HU-BCS1/islamic-inheritance-calculator.git
+$ npm install --save https://github.com/HU-BCS1/islamic-inheritance-calculator.git
 ```
 
 ## usage
