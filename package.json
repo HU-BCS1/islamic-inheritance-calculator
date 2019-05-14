@@ -9,7 +9,7 @@
     "test": "jest",
     "start": "tsc && node lib/index.js",
     "build": "tsc",
-    "prepare": "npm run build"
+    "prepare": "tsc"
   },
   "dependencies": {
     "@types/lodash.sumby": "^4.6.6",
