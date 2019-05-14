@@ -1,5 +1,5 @@
 {
-  "name": "@islamic-inheritance-calculator/core",
+  "name": "islamic-inheritance-calculator",
   "version": "1.0.0",
   "description": "islamic inheritance calculator",
   "main": "lib/index.js",
