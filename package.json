@@ -2,12 +2,14 @@
   "name": "@islamic-inheritance-calculator/core",
   "version": "1.0.0",
   "description": "islamic inheritance calculator",
-  "main": "index.js",
+  "main": "lib/index.js",
   "author": "Hormuud BSC1 group B",
   "license": "MIT",
   "scripts": {
-    "start": "tsc && node dist/index.js",
-    "test": "jest"
+    "test": "jest",
+    "start": "tsc && node lib/index.js",
+    "build": "tsc",
+    "prepare": "npm run build"
   },
   "dependencies": {
     "@types/lodash.sumby": "^4.6.6",
