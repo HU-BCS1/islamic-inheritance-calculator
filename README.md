@@ -25,7 +25,6 @@ printResuls(result)
 ```
 
 ## TODO
-- [ ] add arabic support
 - [ ] ميراث الجد مع الإخوة
 - [ ] ميراث الأخ الشقيق مع الإخوة لأم
 - [ ] add option to configure special cases
