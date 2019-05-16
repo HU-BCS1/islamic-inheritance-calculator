@@ -1,5 +1,5 @@
 # islamic-inheritance-calculator
-NB: This a work in progress. if you see an error in calculation please file  an issue
+NB: This a work in progress. if you see an error in calculations, then please file an issue
 
 ## install
 ```
