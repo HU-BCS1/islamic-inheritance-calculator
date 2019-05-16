@@ -3,7 +3,7 @@ NB: This a work in progress. if you see an error in calculation please file  an 
 
 ## install
 ```
-$ npm install --save https://github.com/HU-BCS1/islamic-inheritance-calculator.git
+$ npm i @hu-bcs1/islamic-inheritance-calculator
 ```
 
 ## usage
@@ -25,10 +25,8 @@ printResuls(result)
 ```
 
 ## TODO
-[ ] ميراث الجد مع الإخوة
-
-[ ] ميراث الأخ الشقيق مع الإخوة لأم
-
-[ ] add option to configure special cases
-
-[ ] add more test cases from http://inheritance.ilmsummit.org/projects/inheritance/testcasespage.aspx
+- [ ] add arabic support
+- [ ] ميراث الجد مع الإخوة
+- [ ] ميراث الأخ الشقيق مع الإخوة لأم
+- [ ] add option to configure special cases
+- [ ] add more test cases from http://inheritance.ilmsummit.org/projects/inheritance/testcasespage.aspx
