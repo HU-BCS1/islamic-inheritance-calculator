@@ -1,6 +1,6 @@
 import Fraction from 'fraction.js'
 
-type Partner = 'husband' | 'wife'
+type Spouse = 'husband' | 'wife'
 
 type Descendant = 'son' | 'daughter' | 'paternal_grand_son' | 'paternal_grand_daughter'
 
@@ -21,7 +21,7 @@ type Other =
   'full_cousin_s_son' | 'paternal_cousin_s_son' |
   'full_cousin_s_grandson' | 'paternal_cousin_s_grandson'
 
-export type Heir = Partner | Descendant | Ancestor | Sibling | Other
+export type Heir = Spouse | Descendant | Ancestor | Sibling | Other
 
 // map of heirs to their count
 export type Heirs = { [heir in Heir]: number }
