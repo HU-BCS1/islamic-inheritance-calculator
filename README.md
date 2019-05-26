@@ -1,4 +1,4 @@
-# islamic-inheritance-calculator
+# islamic-inheritance-calculator ![GitHub package.json version](https://img.shields.io/github/package-json/v/HU-BCS1/islamic-inheritance-calculator.svg)
 NB: This a work in progress. if you see an error in calculations, then please file an issue
 
 ## install
