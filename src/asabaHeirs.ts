@@ -14,16 +14,10 @@ const ahs: AsabaHeir[] = [
   { name: 'paternal_sister', tasibRank: 6 },
   { name: 'full_nephew', tasibRank: 7 },
   { name: 'paternal_nephew', tasibRank: 8 },
-  { name: `full_nephew_s_son`, tasibRank: 9 },
-  { name: `paternal_nephew_s_son`, tasibRank: 10 },
-  { name: 'full_paternal_uncle', tasibRank: 11 },
-  { name: 'paternal_paternal_uncle', tasibRank: 12 },
-  { name: 'full_cousin', tasibRank: 13 },
-  { name: 'paternal_cousin', tasibRank: 14 },
-  { name: `full_cousin_s_son`, tasibRank: 15 },
-  { name: `paternal_cousin_s_son`, tasibRank: 16 },
-  { name: `full_cousin_s_grandson`, tasibRank: 17 },
-  { name: `paternal_cousin_s_grandson`, tasibRank: 18 }
+  { name: 'full_paternal_uncle', tasibRank: 9 },
+  { name: 'paternal_paternal_uncle', tasibRank: 10 },
+  { name: 'full_cousin', tasibRank: 11 },
+  { name: 'paternal_cousin', tasibRank: 12 },
 ]
 
 export default ahs

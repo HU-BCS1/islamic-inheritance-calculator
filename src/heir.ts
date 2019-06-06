@@ -15,11 +15,8 @@ type Sibling =
 
 type Other =
   'full_nephew' | 'paternal_nephew' |
-  'full_nephew_s_son' | 'paternal_nephew_s_son' |
   'full_paternal_uncle' | 'paternal_paternal_uncle' |
-  'full_cousin' | 'paternal_cousin' |
-  'full_cousin_s_son' | 'paternal_cousin_s_son' |
-  'full_cousin_s_grandson' | 'paternal_cousin_s_grandson'
+  'full_cousin' | 'paternal_cousin'
 
 export type Heir = Spouse | Descendant | Ancestor | Sibling | Other
 
@@ -55,14 +52,8 @@ export const heirs: Heirs = {
   'maternal_sibling': 0,
   'full_nephew': 0,
   'paternal_nephew': 0,
-  'full_nephew_s_son': 0,
-  'paternal_nephew_s_son': 0,
   'full_paternal_uncle': 0,
   'paternal_paternal_uncle': 0,
   'full_cousin': 0,
-  'paternal_cousin': 0,
-  'full_cousin_s_son': 0,
-  'paternal_cousin_s_son': 0,
-  'full_cousin_s_grandson': 0,
-  'paternal_cousin_s_grandson': 0
+  'paternal_cousin': 0
 }
