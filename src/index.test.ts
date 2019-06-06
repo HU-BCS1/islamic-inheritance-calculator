@@ -65,8 +65,35 @@ test('1 daughter, 1 paternal_grand_daughter, 2 full_sister', () => {
   checkResult(result, 'full_sister', f(1,3))
 })
 
-xtest('father, 1 full_brother', () => {
+test('father, 1 full_brother', () => {
   const result = calculate({ father: 1, full_brother: 1 })
   checkResult(result, 'father', f(1))
-  checkResult(result, 'full_brother', f(0))
+})
+
+test('1 wife, 1 son, mother', () => {
+  const result = calculate({ wife: 1, son: 1, mother: 1 })
+  checkResult(result, 'wife', f(1,8))
+  checkResult(result, 'son', f(17,24))
+  checkResult(result, 'mother', f(1,6))
+})
+
+// TODO: requires awl
+xtest('husband, 2 full_sister', () => {
+  const result = calculate({ husband: 1, full_sister: 2 })
+  checkResult(result, 'husband', f(3,7))
+  checkResult(result, 'full_sister', f(4,7))
+})
+
+test('husband, father, mother', () => {
+  const result = calculate({ husband: 1, father: 1, mother: 1 })
+  checkResult(result, 'husband', f(1,2))
+  checkResult(result, 'father', f(1,3))
+  checkResult(result, 'mother', f(1,6))
+})
+
+test('1 wife, father, mother', () => {
+  const result = calculate({ wife: 1, father: 1, mother: 1 })
+  checkResult(result, 'wife', f(1,4))
+  checkResult(result, 'father', f(1,2))
+  checkResult(result, 'mother', f(1,4))
 })
