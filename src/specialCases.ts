@@ -1,15 +1,34 @@
+import Fraction from 'fraction.js'
 import { Heir } from './heir'
 import {
   Result,
-  findFromResult
+  findFromResult,
+  printResults,
+  sumResults
 } from './result'
 import { sixth, quarter, third, half } from './quota'
 
 
 export function calculateSpecialCases(fardResult: Result[], asabaResult: Result[]) : Result[] {
   const results = [...fardResult, ...asabaResult]
-  return umariyyahCase(results)
+  return awlCase(umariyyahCase(results))
 }
+
+function awlCase(result: Result[]) : Result[] {
+  const whole = new Fraction(1)
+  const remaining = whole.sub(sumResults(result))
+  const sum = sumResults(result)
+  if(remaining.compare(0) < 0) {
+    return result.map(r => ({
+      ...r,
+      share: r.share.div(sum)
+    }))
+  }
+
+  return result
+}
+
+function mushtarakaCase(result: Result[]) {}
 
 function umariyyahCase(results: Result[]) : Result[] {
   const father = findFromResult(results, 'father')

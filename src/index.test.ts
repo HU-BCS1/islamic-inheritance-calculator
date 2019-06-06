@@ -77,8 +77,7 @@ test('1 wife, 1 son, mother', () => {
   checkResult(result, 'mother', f(1,6))
 })
 
-// TODO: requires awl
-xtest('husband, 2 full_sister', () => {
+test('husband, 2 full_sister', () => {
   const result = calculate({ husband: 1, full_sister: 2 })
   checkResult(result, 'husband', f(3,7))
   checkResult(result, 'full_sister', f(4,7))

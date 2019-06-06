@@ -1,7 +1,7 @@
 import ahs from './asabaHeirs'
-import { Heirs, Heir } from './heir'
+import { Heirs } from './heir'
 import { unknown } from './quota'
-import { Result, sumResults, findFromResult, updateResults } from './result'
+import { Result, sumResults } from './result'
 import { exists, count, distribute } from './utils'
 import Fraction from 'fraction.js'
 
