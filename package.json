@@ -13,9 +13,9 @@
     "prepare": "tsc"
   },
   "dependencies": {
-    "@types/lodash.sumby": "^4.6.6",
+    "@types/lodash": "^4.14.134",
     "fraction.js": "^4.0.12",
-    "lodash.sumby": "^4.6.0"
+    "lodash": "^4.17.11"
   },
   "devDependencies": {
     "@types/jest": "^24.0.11",

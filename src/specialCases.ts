@@ -1,9 +1,9 @@
 import Fraction from 'fraction.js'
+import { sum, zip } from 'lodash'
 import { Heir } from './heir'
 import {
   Result,
   findFromResult,
-  printResults,
   sumResults
 } from './result'
 import { sixth, quarter, third, half } from './quota'
@@ -11,7 +11,7 @@ import { sixth, quarter, third, half } from './quota'
 
 export function calculateSpecialCases(fardResult: Result[], asabaResult: Result[]) : Result[] {
   const results = [...fardResult, ...asabaResult]
-  return awlCase(umariyyahCase(results))
+  return raddCase(awlCase(umariyyahCase(results)))
 }
 
 function awlCase(result: Result[]) : Result[] {
@@ -23,6 +23,32 @@ function awlCase(result: Result[]) : Result[] {
       ...r,
       share: r.share.div(sum)
     }))
+  }
+
+  return result
+}
+
+function raddCase(result: Result[]) : Result[] {
+  const whole = new Fraction(1)
+  const remaining = whole.sub(sumResults(result))
+
+  if (remaining.compare(0) > 0) {
+    const ratios = toRatio(
+      result.map(r => {
+        if (r.name === 'wife' || r.name === 'husband') {
+          return new Fraction(0)
+        }
+        return r.share
+      })
+    )
+
+    return zip(result, ratios).map(([r, ratio]) => {
+      if (!r || !ratio) {
+        throw Error('result and ratios should be equal in lenght')
+      }
+
+      return { ...r, share: r.share.add(remaining.mul(ratio)) }
+    })
   }
 
   return result
@@ -41,7 +67,7 @@ function umariyyahCase(results: Result[]) : Result[] {
     return umariyyahParticipants.includes(r.name)
   })
 
-  if(!isUmariyyah) return results
+  if (!isUmariyyah) return results
 
   const type = 'special_case'
   if (father && mother && wife) {
@@ -61,4 +87,13 @@ function umariyyahCase(results: Result[]) : Result[] {
   }
 
   return results
+}
+
+const toRatio = (fractions: Fraction[]) => {
+  const oldBase = fractions.reduce(
+    (accumulator, current) => accumulator.gcd(current)
+  ).d
+  const ratios = fractions.map(f => (oldBase / f.d) * f.n)
+  const newBase = sum(ratios)
+  return ratios.map(r => new Fraction(r, newBase))
 }

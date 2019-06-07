@@ -1,5 +1,5 @@
 import Fraction from 'fraction.js'
-import sumBy from 'lodash.sumby'
+import { sumBy } from 'lodash'
 import { Heir, Heirs } from './heir'
 import { Result } from './result'
 

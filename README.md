@@ -27,7 +27,7 @@ printResuls(result)
 ## TODO
 - [ ] ميراث الجد مع الإخوة
 - [ ] ميراث الأخ الشقيق مع الإخوة لأم
-- [ ] مسألة الرد
+- [x] مسألة الرد
 - [x] مسألة العول
 - [ ] add option to configure special cases
 - [ ] add more test cases from http://inheritance.ilmsummit.org/projects/inheritance/testcasespage.aspx
