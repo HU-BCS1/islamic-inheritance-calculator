@@ -1,6 +1,6 @@
-import { calculate } from './index'
-import { Result, findFromResult } from './result'
-import { Heir } from './heir';
+import { calculate } from '../src/index'
+import { Result, findFromResult } from '../src/result'
+import { Heir } from '../src/heir';
 import Fraction from 'fraction.js';
 
 function checkResult(
@@ -95,4 +95,44 @@ test('1 wife, father, mother', () => {
   checkResult(result, 'wife', f(1,4))
   checkResult(result, 'father', f(1,2))
   checkResult(result, 'mother', f(1,4))
+})
+
+// requires mushtaraka case
+test.todo('husband, mother, 2 full_brother, 2 meternal_sibling')
+
+test('2 daughter', () => {
+  const result = calculate({ daughter: 2 })
+  checkResult(result, 'daughter', f(1,1))
+})
+
+test('mother, 1 full_sister', () => {
+  const result = calculate({ mother: 1, full_sister: 1 })
+  checkResult(result, 'mother', f(2,5))
+  checkResult(result, 'full_sister', f(3,5))
+})
+
+test('1 paternal_grand_mother, 1 full_sister, 1 maternal_sibling', () => {
+  const result = calculate({
+    paternal_grand_mother: 1,
+    full_sister: 1,
+    maternal_sibling: 1
+  })
+
+  checkResult(result, 'paternal_grand_mother', f(1,5))
+  checkResult(result, 'full_sister', f(3,5))
+  checkResult(result, 'maternal_sibling', f(1,5))
+})
+
+test('TEMP: 1 wife, 1 daughter, 1 grand_daughter, mother', () => {
+  const result = calculate({
+    wife: 1,
+    daughter: 1,
+    paternal_grand_daughter: 1,
+    mother: 1
+  })
+
+  checkResult(result, 'wife', f(1,8))
+  checkResult(result, 'daughter', f(21,40))
+  checkResult(result, 'paternal_grand_daughter', f(7,40))
+  checkResult(result, 'mother', f(7,40))
 })

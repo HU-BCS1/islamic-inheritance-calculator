@@ -24,6 +24,7 @@
     "typescript": "^3.4.5"
   },
   "jest": {
-    "preset": "ts-jest"
+    "preset": "ts-jest",
+    "testRegex": "/__tests__/.*"
   }
 }
