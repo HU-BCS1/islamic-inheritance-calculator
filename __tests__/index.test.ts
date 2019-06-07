@@ -23,6 +23,11 @@ function checkResult(
 
 const f = (num: number, den: number = 1) => new Fraction(num, den)
 
+test('empty case', () => {
+  const result = calculate({})
+  expect(result.length).toEqual(0)
+})
+
 test('1 wife, 1 son', () => {
   const result = calculate({ wife: 1, son: 1 })
   checkResult(result, 'wife', f(1,8))

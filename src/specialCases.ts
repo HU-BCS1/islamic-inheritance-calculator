@@ -91,7 +91,8 @@ function umariyyahCase(results: Result[]) : Result[] {
 
 const toRatio = (fractions: Fraction[]) => {
   const oldBase = fractions.reduce(
-    (accumulator, current) => accumulator.gcd(current)
+    (accumulator, current) => accumulator.gcd(current),
+    new Fraction(1)
   ).d
   const ratios = fractions.map(f => (oldBase / f.d) * f.n)
   const newBase = sum(ratios)
