@@ -25,6 +25,6 @@
   },
   "jest": {
     "preset": "ts-jest",
-    "testRegex": "/__tests__/.*"
+    "testRegex": "/__tests__/.*\\.test\\.ts$"
   }
 }
