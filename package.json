@@ -8,9 +8,9 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "start": "tsc && node lib/index.js",
-    "build": "tsc",
-    "prepare": "tsc"
+    "start": "node lib/index.js",
+    "build": "tsc -p tsconfig.build.json",
+    "prepare": "tsc -p tsconfig.build.json"
   },
   "dependencies": {
     "@types/lodash": "^4.14.134",
