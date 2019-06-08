@@ -1,6 +1,6 @@
 {
   "name": "@hu-bcs1/islamic-inheritance-calculator",
-  "version": "1.3.4",
+  "version": "1.3.5",
   "description": "islamic inheritance calculator",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
