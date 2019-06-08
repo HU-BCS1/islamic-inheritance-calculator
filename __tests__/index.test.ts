@@ -23,9 +23,16 @@ function checkResult(
 
 const f = (num: number, den: number = 1) => new Fraction(num, den)
 
-test('empty case', () => {
-  const result = calculate({})
-  expect(result.length).toEqual(0)
+describe('Some edge cases', () => {
+  test('empty input', () => {
+    const result = calculate({})
+    expect(result.length).toEqual(0)
+  })
+
+  test('single spouse', () => {
+    calculate({ wife: 1 })
+    calculate({ husband: 1 })
+  })
 })
 
 test('1 wife, 1 son', () => {

@@ -35,7 +35,7 @@ function raddCase(result: Result[]) : Result[] {
   if (remaining.compare(0) > 0) {
     const ratios = toRatio(
       result.map(r => {
-        if (r.name === 'wife' || r.name === 'husband') {
+        if ((r.name === 'wife' || r.name === 'husband') && result.length > 1) {
           return new Fraction(0)
         }
         return r.share
