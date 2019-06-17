@@ -109,8 +109,19 @@ test('1 wife, father, mother', () => {
   checkResult(result, 'mother', f(1,4))
 })
 
-// requires mushtaraka case
-test.todo('husband, mother, 2 full_brother, 2 meternal_sibling')
+test('husband, mother, 2 full_brother, 2 meternal_sibling', () => {
+  const result = calculate({
+    husband: 1,
+    mother: 1,
+    full_brother: 2,
+    maternal_sibling: 2
+  })
+
+  checkResult(result, 'husband', f(1,2))
+  checkResult(result, 'mother', f(1,6))
+  checkResult(result, 'full_brother', f(1,6))
+  checkResult(result, 'maternal_sibling', f(1,6))
+})
 
 test('2 daughter', () => {
   const result = calculate({ daughter: 2 })

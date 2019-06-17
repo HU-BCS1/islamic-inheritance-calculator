@@ -20,7 +20,7 @@ export const updateResults = (
   updateResults: Result[]
 ) => {
   return results.map(r => {
-    const updated = findFromResult(updateResults, r.name)
+    const updated = findFromResult(updateResults, r.name, r.type)
     return updated || r
   })
 }

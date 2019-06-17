@@ -1,24 +1,29 @@
 import Fraction from 'fraction.js'
-import { sum, zip } from 'lodash'
+import { sum, zip, flow } from 'lodash'
 import { Heir } from './heir'
 import {
   Result,
   findFromResult,
-  sumResults
+  sumResults,
+  updateResults
 } from './result'
 import { sixth, quarter, third, half } from './quota'
+import { distribute } from './utils'
 
 
-export function calculateSpecialCases(fardResult: Result[], asabaResult: Result[]) : Result[] {
+export function calculateSpecialCases(
+  fardResult: Result[],
+  asabaResult: Result[]
+): Result[] {
   const results = [...fardResult, ...asabaResult]
-  return raddCase(awlCase(umariyyahCase(results)))
+  return flow([umariyyahCase, mushtarakaCase, awlCase, raddCase])(results)
 }
 
-function awlCase(result: Result[]) : Result[] {
+function awlCase(result: Result[]): Result[] {
   const whole = new Fraction(1)
   const remaining = whole.sub(sumResults(result))
   const sum = sumResults(result)
-  if(remaining.compare(0) < 0) {
+  if (remaining.compare(0) < 0) {
     return result.map(r => ({
       ...r,
       share: r.share.div(sum)
@@ -28,7 +33,7 @@ function awlCase(result: Result[]) : Result[] {
   return result
 }
 
-function raddCase(result: Result[]) : Result[] {
+function raddCase(result: Result[]): Result[] {
   const whole = new Fraction(1)
   const remaining = whole.sub(sumResults(result))
 
@@ -54,20 +59,37 @@ function raddCase(result: Result[]) : Result[] {
   return result
 }
 
-function mushtarakaCase(result: Result[]) {}
+function mushtarakaCase(result: Result[]): Result[] {
+  const fullBrother = findFromResult(result, 'full_brother')
+  const maternalSibling = findFromResult(result, 'maternal_sibling')
 
-function umariyyahCase(results: Result[]) : Result[] {
-  const father = findFromResult(results, 'father')
-  const mother = findFromResult(results, 'mother')
-  const wife = findFromResult(results, 'wife')
-  const husband = findFromResult(results, 'husband')
+  if (fullBrother && maternalSibling) {
+    if (fullBrother.share.compare(maternalSibling.share)) {
+      return updateResults(
+        result,
+        distribute(
+          [fullBrother, maternalSibling],
+          fullBrother.share.add(maternalSibling.share)
+        )
+      )
+    }
+  }
 
-  const isUmariyyah = results.every(r => {
+  return result
+}
+
+function umariyyahCase(result: Result[]): Result[] {
+  const father = findFromResult(result, 'father')
+  const mother = findFromResult(result, 'mother')
+  const wife = findFromResult(result, 'wife')
+  const husband = findFromResult(result, 'husband')
+
+  const isUmariyyah = result.every(r => {
     const umariyyahParticipants: Heir[] = ['father', 'mother', 'husband', 'wife']
     return umariyyahParticipants.includes(r.name)
   })
 
-  if (!isUmariyyah) return results
+  if (!isUmariyyah) return result
 
   const type = 'special_case'
   if (father && mother && wife) {
@@ -86,7 +108,7 @@ function umariyyahCase(results: Result[]) : Result[] {
     ]
   }
 
-  return results
+  return result
 }
 
 const toRatio = (fractions: Fraction[]) => {

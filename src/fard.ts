@@ -9,7 +9,7 @@ import { exists, count, distribute, isZero } from './utils'
 import { sixth } from './quota'
 
 
-export function calculateFard(heirs: Heirs) : Result[] {
+export function calculateFard(heirs: Heirs): Result[] {
   const fardHiers = fhs.filter(fh => exists(heirs, fh.name))
 
   const results = fardHiers
@@ -27,7 +27,7 @@ export function calculateFard(heirs: Heirs) : Result[] {
   return shareSixthBetweenGrandmothers(results)
 }
 
-function shareSixthBetweenGrandmothers(results: Result[]) : Result[] {
+function shareSixthBetweenGrandmothers(results: Result[]): Result[] {
   const mGrandMother = findFromResult(results, 'maternal_grand_mother')
   const pGrandMother = findFromResult(results, 'paternal_grand_mother')
   if(mGrandMother && pGrandMother) {

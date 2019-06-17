@@ -6,7 +6,7 @@ import { exists, count, distribute } from './utils'
 import Fraction from 'fraction.js'
 
 
-export function calculateTasib(heirs: Heirs, fardResult: Result[]) : Result[] {
+export function calculateTasib(heirs: Heirs, fardResult: Result[]): Result[] {
   // filter out asaba that exist and sort them by their tasibRank
   const asabas = ahs
     .filter(ah => exists(heirs, ah.name))
