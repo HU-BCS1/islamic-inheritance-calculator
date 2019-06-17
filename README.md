@@ -1,5 +1,6 @@
-# islamic-inheritance-calculator ![GitHub package.json version](https://img.shields.io/github/package-json/v/HU-BCS1/islamic-inheritance-calculator.svg)
-NB: This a work in progress. if you see an error in calculations, then please file an issue
+# islamic-inheritance-calculator <a href="https://www.npmjs.com/package/@hu-bcs1/islamic-inheritance-calculator"><img alt="npm (scoped)" src="https://img.shields.io/npm/v/@hu-bcs1/islamic-inheritance-calculator.svg?style=flat-square"></a>
+
+NB: This a work in progress. if you spot an error in calculations, then please file an issue
 
 ## install
 ```
