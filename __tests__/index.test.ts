@@ -156,6 +156,22 @@ test('1 daughter, 2 grand_daughter', () => {
   checkResult(result, 'daughter', f(3,4))
 })
 
+test('mother, 3 maternal_sibling', () => {
+  const result = calculate({
+    mother: 1,
+    maternal_sibling: 3
+  })
+
+  checkResult(result, 'mother', f(1,3))
+  checkResult(result, 'maternal_sibling', f(2,3))
+})
+
+test('1 wife, 2 full_sister', () => {
+  const result = calculate({ wife: 1, full_sister: 2 })
+  checkResult(result , 'wife', f(1,4))
+  checkResult(result , 'full_sister', f(3,4))
+})
+
 test('TEMP: 1 wife, 1 daughter, 1 grand_daughter, mother', () => {
   const result = calculate({
     wife: 1,

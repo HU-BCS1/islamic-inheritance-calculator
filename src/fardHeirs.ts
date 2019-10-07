@@ -20,7 +20,7 @@ const Wife: FardHeir = {
   name: 'wife',
   share: function(heirs) {
     if (hasChild(heirs)) { return eighth }
-    else { return half }
+    else { return quarter }
   }
 }
 
