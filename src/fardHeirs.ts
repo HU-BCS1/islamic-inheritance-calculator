@@ -44,8 +44,7 @@ const PaternalGrandDaughter: FardHeir = {
       return nothing
     }
     else if (count(heirs, 'daughter') === 1) {
-      if (count(heirs, this.name) === 1) { return sixth }
-      else { return nothing }
+      return sixth
     }
     else {
       if (count(heirs, this.name) === 1) { return half }
