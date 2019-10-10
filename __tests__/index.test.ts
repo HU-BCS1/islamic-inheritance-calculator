@@ -333,6 +333,93 @@ test('2 full_brother, 1 full_sister', () => {
   checkResult(result, 'full_sister', f(1,5))
 })
 
+test('father, mother, 2 full_sister', () => {
+  const result = calculate({ father: 1, mother: 1, full_sister: 2 })
+  checkResult(result, 'father', f(5,6))
+  checkResult(result, 'mother', f(1,6))
+})
+
+test('husband, 1 full_sister', () => {
+  const result = calculate({ husband: 1, full_sister: 1 })
+  checkResult(result, 'husband', f(1,2))
+  checkResult(result, 'full_sister', f(1,2))
+})
+
+test('1 wife, 1 daughter, mother, 1 full_uncle', () => {
+  const result = calculate({
+    wife: 1,
+    daughter: 1,
+    mother: 1,
+    full_paternal_uncle: 1
+  })
+  checkResult(result, 'wife', f(1,8))
+  checkResult(result, 'daughter', f(1,2))
+  checkResult(result, 'mother', f(1,6))
+  checkResult(result, 'full_paternal_uncle', f(5,24))
+})
+
+test('husband, 1 daughter, father', () => {
+  const result = calculate({ husband: 1, daughter: 1, father: 1 })
+  checkResult(result, 'husband', f(1,4))
+  checkResult(result, 'daughter', f(1,2))
+  checkResult(result, { name: 'father', type: 'fard' }, f(1,6))
+  checkResult(result, { name: 'father', type: 'tasib' }, f(1,12))
+})
+
+test('husband, 1 grand_daughter, 1 full_cousin', () => {
+  const result = calculate({
+    husband: 1,
+    paternal_grand_daughter: 1,
+    full_cousin: 1
+  })
+  checkResult(result, 'husband', f(1,4))
+  checkResult(result, 'paternal_grand_daughter', f(1,2))
+  checkResult(result, 'full_cousin', f(1,4))
+})
+
+test('mother, 2 full_brother', () => {
+  const result = calculate({ mother: 1, full_brother: 2 })
+  checkResult(result, 'mother', f(1,6))
+  checkResult(result, 'full_brother', f(5,6))
+})
+
+test('mother, 1 paternal_brother, 1 maternal_sibling', () => {
+  const result = calculate({
+    mother: 1,
+    paternal_brother: 1,
+    maternal_sibling: 1
+  })
+  checkResult(result, 'mother', f(1,6))
+  checkResult(result, 'paternal_brother', f(2,3))
+  checkResult(result, 'maternal_sibling', f(1,6))
+})
+
+test('2 wife, mother, 1 full_nephew', () => {
+  const result = calculate({ wife: 2, mother: 1, full_nephew: 1 })
+  checkResult(result, 'wife', f(1,4))
+  checkResult(result, 'mother', f(1,3))
+  checkResult(result, 'full_nephew', f(5,12))
+})
+
+test('1 wife, 2 daughter, 1 paternal_cousin', () => {
+  const result = calculate({ wife: 1, daughter: 2, paternal_cousin: 1 })
+  checkResult(result, 'wife', f(1,8))
+  checkResult(result, 'daughter', f(2,3))
+  checkResult(result, 'paternal_cousin', f(5,24))
+})
+
+test('1 daughter, 1 grandson', () => {
+  const result = calculate({ daughter: 1, paternal_grand_son: 1 })
+  checkResult(result, 'daughter', f(1,2))
+  checkResult(result, 'paternal_grand_son', f(1,2))
+})
+
+test('1 daughter, 1 paternal_cousin', () => {
+  const result = calculate({ daughter: 1, paternal_cousin: 1 })
+  checkResult(result, 'daughter', f(1,2))
+  checkResult(result, 'paternal_cousin', f(1,2))
+})
+
 test('TEMP: 1 wife, 1 daughter, 1 grand_daughter, mother', () => {
   const result = calculate({
     wife: 1,
@@ -340,7 +427,6 @@ test('TEMP: 1 wife, 1 daughter, 1 grand_daughter, mother', () => {
     paternal_grand_daughter: 1,
     mother: 1
   })
-
   checkResult(result, 'wife', f(1,8))
   checkResult(result, 'daughter', f(21,40))
   checkResult(result, 'paternal_grand_daughter', f(7,40))
