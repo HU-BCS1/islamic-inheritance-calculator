@@ -5,9 +5,9 @@ import {
   Result,
   findFromResult,
   sumResults,
-  updateResults
+  updateResults, printResults
 } from './result'
-import { sixth, quarter, third, half } from './quota'
+import { sixth, quarter, third, half, nothing } from './quota'
 import { distribute } from './utils'
 
 
@@ -64,13 +64,10 @@ function mushtarakaCase(result: Result[]): Result[] {
   const maternalSibling = findFromResult(result, 'maternal_sibling')
 
   if (fullBrother && maternalSibling) {
-    if (fullBrother.share.compare(maternalSibling.share)) {
+    if (fullBrother.share.compare(nothing) === 0) {
       return updateResults(
         result,
-        distribute(
-          [fullBrother, maternalSibling],
-          fullBrother.share.add(maternalSibling.share)
-        )
+        distribute([fullBrother, maternalSibling], maternalSibling.share)
       )
     }
   }
