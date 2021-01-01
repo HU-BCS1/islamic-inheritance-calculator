@@ -32,4 +32,4 @@ printResuls(result)
 - [x] مسألة العول
 - [ ] add calculation steps explainer. see http://inheritance.ilmsummit.org/projects/inheritance/Results.aspx?TestCaseID=80
 - [ ] add option to configure special cases
-- [ ] add more test cases from http://inheritance.ilmsummit.org/projects/inheritance/testcasespage.aspx
+- [x] add more test cases from http://inheritance.ilmsummit.org/projects/inheritance/testcasespage.aspx
