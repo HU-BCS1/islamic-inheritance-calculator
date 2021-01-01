@@ -1,6 +1,6 @@
 import ahs from './asabaHeirs'
 import { Heirs } from './heir'
-import { unknown } from './quota'
+import { unknown, nothing } from './quota'
 import { Result, sumResults } from './result'
 import { exists, count, distribute } from './utils'
 import Fraction from 'fraction.js'
@@ -34,7 +34,10 @@ export function calculateTasib(heirs: Heirs, fardResult: Result[]): Result[] {
   })
 
   const whole = new Fraction(1)
-  const remaining = whole.sub(sumResults(fardResult))
+  let remaining = whole.sub(sumResults(fardResult))
+  if (remaining.compare(0) < 0) {
+    remaining = nothing
+  }
 
   switch(results.length) {
     case 0: return results

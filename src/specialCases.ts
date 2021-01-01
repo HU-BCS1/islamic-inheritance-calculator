@@ -5,7 +5,7 @@ import {
   Result,
   findFromResult,
   sumResults,
-  updateResults, printResults
+  updateResults
 } from './result'
 import { sixth, quarter, third, half, nothing } from './quota'
 import { distribute } from './utils'
