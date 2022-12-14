@@ -15,6 +15,13 @@ export const findFromResult = (
   return results.find(r => r.name === heir)
 }
 
+export const findAllFromResult = (
+  results: Result[],
+  heir: Heir,
+) => {
+  return results.filter(r => r.name === heir)
+}
+
 export const updateResults = (
   results: Result[],
   updateResults: Result[]
